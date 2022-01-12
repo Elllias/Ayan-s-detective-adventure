@@ -1,40 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro;
-
-using static Dialogue;
+using System.IO;
 
 public class DialogueManager : MonoBehaviour
 {
-    public GameObject Window;
-    public TextMeshProUGUI Text;
+    public Text Text;
+    public Text NpcName;
     public Button FirstChoiseButton;
     public Button SecondChoiseButton;
     public Button ThirdChoiseButton;
+    public GameObject UncommonWindow;
     public TextAsset TA;
+    public Image Background;
+    private int curNode;
+    private Dialogue dialogue;
+    private SoundManager soundManager;
+    private BackgroundManager backgroundManager;
+
     private bool dialogEnded = false;
 
-    [SerializeField]
-    public int curNode = 0;
-    public int butClicked;
-    Node[] nodes;
-    Dialogue dialogue;
     private void Start()
     {
-        SecondChoiseButton.enabled = false;
-        ThirdChoiseButton.enabled = false;
-        Window.SetActive(true);
         dialogue = Dialogue.Load(TA);
-        nodes = dialogue.nodes;
-        Text.text = nodes[curNode].npctext;
-        FirstChoiseButton.GetComponentInChildren<Text>().text = dialogue.nodes[curNode].answers[0].text;
+        soundManager = gameObject.GetComponent<SoundManager>();
+        backgroundManager = gameObject.GetComponent<BackgroundManager>();
 
-        FirstChoiseButton.onClick.AddListener(butClick1);
-        SecondChoiseButton.onClick.AddListener(butClick2);
-        ThirdChoiseButton.onClick.AddListener(butClick3);
+        FirstChoiseButton.onClick.AddListener(() => AnswerClicked(0));
+        SecondChoiseButton.onClick.AddListener(() => AnswerClicked(1));
+        ThirdChoiseButton.onClick.AddListener(() => AnswerClicked(2));
 
         AnswerClicked(-1);
     }
@@ -53,54 +47,54 @@ public class DialogueManager : MonoBehaviour
             curNode = 0;
         else
         {
-            if (dialogue.nodes[curNode].answers[curBut].end == "True")
+            if (dialogue.nodes[curNode].answers[curBut].end == "true")
                 dialogEnded = true;
+            if (dialogue.nodes[curNode].answers[curBut].emotion == "bad")
+                CL.CurrentRelations -= 10;
+            if (dialogue.nodes[curNode].answers[curBut].emotion == "good")
+                CL.CurrentRelations += 10;
             curNode = dialogue.nodes[curNode].answers[curBut].nextNode;
         }
 
+        if (dialogue.nodes[curNode].ucw == "true")
+        {
+            UncommonWindow.SetActive(true);
+        }
+
+        if (dialogue.nodes[curNode].background != null)
+            backgroundManager.ChangeBackground(dialogue.nodes[curNode].background);
+
+        if (dialogue.nodes[curNode].sound != null)
+        {
+            soundManager.PlaySound(dialogue.nodes[curNode].sound);
+        }
+
+        NpcName.text = dialogue.nodes[curNode].npcname;
         Text.text = dialogue.nodes[curNode].npctext;
         FirstChoiseButton.GetComponentInChildren<Text>().text = dialogue.nodes[curNode].answers[0].text;
+
         if(dialogue.nodes[curNode].answers.Length >= 2)
-        {
-            SecondChoiseButton.enabled = true;
-            SecondChoiseButton.GetComponentInChildren<Text>().text = dialogue.nodes[curNode].answers[1].text;
-        }
+            TurnOnButton(SecondChoiseButton, 1);
         else
-        {
-            SecondChoiseButton.enabled = false;
-            SecondChoiseButton.GetComponentInChildren<Text>().text = "";
-        }
+            TurnOffButton(SecondChoiseButton);
+
         if (dialogue.nodes[curNode].answers.Length == 3)
-        {
-            ThirdChoiseButton.enabled = true;
-            ThirdChoiseButton.GetComponentInChildren<Text>().text = dialogue.nodes[curNode].answers[2].text;
-        }
+            TurnOnButton(ThirdChoiseButton, 2);
         else
-        {
-            ThirdChoiseButton.enabled = false;
-            ThirdChoiseButton.GetComponentInChildren<Text>().text = "";
-        }
+            TurnOffButton(ThirdChoiseButton);
     }
 
-    private void butClick1()
+    private void TurnOnButton(Button button, int answerNumber)
     {
-        butClicked = 0;
-        AnswerClicked(0);
-    }
-    private void butClick2()
-    {
-        butClicked = 1;
-        AnswerClicked(1);
-    }
-    private void butClick3()
-    {
-        butClicked = 2;
-        AnswerClicked(2);
+        button.enabled = true;
+        button.GetComponentInChildren<Image>().gameObject.SetActive(true);
+        button.GetComponentInChildren<Text>().text = dialogue.nodes[curNode].answers[answerNumber].text;
     }
 
-    //private void butClick(int numButton) // Не работает, т.к. не возвращает ивент.
-    //{
-    //    butClicked = numButton;
-    //    AnswerClicked(numButton);
-    //}
+    private void TurnOffButton(Button button)
+    {
+        button.enabled = false;
+        button.GetComponentInChildren<Text>().text = "";
+        button.GetComponentInChildren<Image>().gameObject.SetActive(false);
+    }
 }

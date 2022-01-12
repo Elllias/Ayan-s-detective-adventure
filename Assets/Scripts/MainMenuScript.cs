@@ -2,13 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.IO;
 
 public class MainMenuScript : MonoBehaviour
 {
-    public int curLevel;
-    public void StartLevel()
+    public int CurLevel;
+
+    private void Start()
     {
-        SceneManager.LoadScene(curLevel);
+        CurLevel = CL.CurrentLevel;
+        Debug.Log(CurLevel);
+    }
+
+    public void StartLevel(int numLevel)
+    {
+        SceneManager.LoadScene(numLevel);
     }
 
     public void QuitGame()
@@ -17,9 +26,9 @@ public class MainMenuScript : MonoBehaviour
         Application.Quit();
     }
 
-    public void GiveCurrentScene(int curSc)
+    public void GiveCurLevel(int currentLevel)
     {
-        curLevel = curSc;
-        Debug.Log(curLevel); // TODO ”ничтожить строку на билде
+        if(currentLevel >= CL.CurrentLevel)
+            CL.CurrentLevel = currentLevel;
     }
 }

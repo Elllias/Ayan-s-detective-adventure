@@ -1,0 +1,295 @@
+﻿<dialogue>
+    <node>
+		<npcname></npcname>
+		<sound>house</sound>
+        <npctext>Утро следующего дня. Первые лучи солнца будят Аяна.</npctext>
+        <answers>
+            <answer tonode="1">
+                <text>*проснуться*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname>Мысли</npcname>
+        <npctext>Ясный день.. Наконец-то меня ждет что-то действительно интересное.</npctext>
+        <answers>
+            <answer tonode="2" emotion="good">
+                <text>*принять душ и поесть*</text>
+            </answer>
+		    <answer tonode="2" emotion="bad">
+                <text>*поесть*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname>Мысли</npcname>
+        <npctext>Пора бы начать собираться, чтобы успеть.</npctext>
+        <answers>
+            <answer tonode="3">
+                <text>*начать сборы*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname>Мысли</npcname>
+        <npctext>Так-с, мне нужно собрать: Кейс со снаряжением, сумка с одеждой, кредиты, трубка</npctext>
+        <answers>
+            <answer tonode="4">
+                <text>*заглянуть в кабинет*</text>
+            </answer>
+        </answers>
+    </node>
+    <node>
+		<npcname>Мысли</npcname>
+        <npctext>Я в кабинете, что тут у нас?</npctext>
+        <answers>
+            <answer tonode="5">
+                <text>*Осмотреть стеллаж*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname>Мысли</npcname>
+        <npctext>На стеллаже есть кейс со снаряжением и кейс с документами.</npctext>
+        <answers>
+            <answer tonode="6">
+                <text>*взять кейс со снаряжением*</text>
+            </answer>
+		    <answer tonode="7">
+                <text>*взять кейс с документами*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname>Мысли</npcname>
+        <npctext>Теперь я у стола в кабинете. Тут есть портсигар и кредиты.</npctext>
+        <answers>
+            <answer tonode="7">
+                <text>*взять портсигар*</text>
+            </answer>
+		    <answer tonode="8">
+                <text>*взять кредиты*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname>Мысли</npcname>
+        <npctext>Так, стоп. Что-то я запутался, надо начать заново.</npctext>
+        <answers>
+            <answer tonode="3">
+                <text>*начать сборы заново*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname>Мысли</npcname>
+        <npctext>Хорошо. Теперь я должен пойти в спальню. Быть может там есть что-то?</npctext>
+        <answers>
+            <answer tonode="9">
+                <text>*пойти в спальню*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname>Мысли</npcname>
+        <npctext>Теперь я в спальне. Хмм.. Осмотрю шкаф.</npctext>
+        <answers>
+            <answer tonode="10">
+                <text>*осмотреть шкаф*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname>Мысли</npcname>
+        <npctext>В шкафу есть: швейный набор и сумка с одеждой.</npctext>
+        <answers>
+            <answer tonode="7">
+                <text>*взять швейный набор*</text>
+            </answer>
+		    <answer tonode="11">
+                <text>*взять сумку с одеждой*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname>Мысли</npcname>
+        <npctext>Сумка есть, осталось осмотреть тумбочку.</npctext>
+        <answers>
+            <answer tonode="12">
+                <text>*осмотреть тумбочку*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname>Мысли</npcname>
+        <npctext>В тумбочке лежит трубка и аптечка.</npctext>
+        <answers>
+            <answer tonode="13">
+                <text>*взять трубку*</text>
+            </answer>
+		    <answer tonode="7">
+                <text>*взять аптечку*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname>Мысли</npcname>
+        <npctext>Кажется, все на месте, пора выходить.</npctext>
+        <answers>
+            <answer tonode="14">
+                <text>*послушать прогноз погоды*</text>
+            </answer>
+		    <answer tonode="15" emotion="bad">
+                <text>*выйти*</text>
+            </answer>
+		    <answer tonode="15" emotion="good">
+                <text>*взять зонт и выйти*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname>Голосовой ассистент:</npcname>
+        <npctext>Сегодня облачко, возможны кратковременные дожди.</npctext>
+        <answers>
+            <answer tonode="15" emotion="good">
+                <text>*выйти и взять зонт*</text>
+            </answer>
+		    <answer tonode="15" emotion="bad">
+                <text>*выйти*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname></npcname>
+        <npctext>На улице шел дождь, стоял прохладный серый вечер.</npctext>
+        <answers>
+            <answer tonode="16">
+                <text>*продолжить*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname>Мысли</npcname>
+        <npctext>Надо найти транспорт, чтобы добраться до дома графа</npctext>
+        <answers>
+            <answer tonode="25">
+                <text>*уехать на электричке*</text>
+            </answer>
+		    <answer tonode="17">
+                <text>*вызвать такси*</text>
+            </answer>
+		    <answer tonode="19">
+                <text>*арендовать автомобиль*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<background>road</background>
+		<npcname>Мысли</npcname>
+        <npctext>Я так давно не выбирался из своего района, уже и забыл, как прекрасен вечерний город. Дорога была почти пустой, потому мы быстро доехали до окраин. Темнело. Спустя некоторое время, на обочине дороги я заметил автомобиль, может стоит остановиться и проверить?</npctext>
+        <answers>
+            <answer tonode="18">
+                <text>*попросить таксиста остановиться*</text>
+            </answer>
+		    <answer tonode="25">
+                <text>*проехать дальше*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname>Водитель</npcname>
+        <npctext>Тут часто пропадают люди. Сами понимаете, загородом опасно. Я не стану останавливаться.</npctext>
+        <answers>
+            <answer tonode="25">
+                <text>*проехать дальше*</text>
+            </answer>
+        </answers>
+    </node>
+    <node>
+		<background>road</background>
+		<npcname>Мысли</npcname>
+        <npctext>Я так давно не выбирался из своего района, уже и забыл, как прекрасен вечерний город. Дорога была почти пустой, потому мы быстро доехали до окраин. Темнело. Спустя некоторое время, на обочине дороги я заметил автомобиль, может стоит остановиться и проверить?</npctext>
+        <answers>
+            <answer tonode="20">
+                <text>*остановиться*</text>
+            </answer>
+		    <answer tonode="25">
+                <text>*проехать дальше*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<background>forest</background>
+		<sound>horror</sound>
+		<npcname></npcname>
+        <npctext>Вы остановились. При выходе из машины, вы заметили мужской силуэт.</npctext>
+        <answers>
+            <answer tonode="21">
+                <text>*пойти за силуэтом*</text>
+            </answer>
+		    <answer tonode="25">
+                <text>*вернуться в машину и уехать*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname></npcname>
+        <npctext>Вы заметили полуразрушенный кирпичный дом, лишь одно окно на верхнем этаже было озарено светом одинокой свечи.</npctext>
+        <answers>
+            <answer tonode="22">
+                <text>*пойти к дому*</text>
+            </answer>
+		    <answer tonode="25">
+                <text>*вернуться в машину и уехать*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname></npcname>
+        <npctext>По дороге к дому ваш взгляд привлекла ворона, подвешенная на веревке в полуметре от земли. Кажется все кричит вам о том, что пора разворачиваться.</npctext>
+        <answers>
+            <answer tonode="23">
+                <text>*зайти в полуразрушенный гараж*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname></npcname>
+        <npctext>Вы чувствуете резкую тупую боль в голове. Видимо кто-то ударил вас сзади. Это была ваша последняя ночь.</npctext>
+        <answers>
+            <answer tonode="24">
+                <text>*проснуться*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname></npcname>
+        <npctext>Кажется вы просто задремали, когда остановились на обочине у дома.</npctext>
+        <answers>
+            <answer tonode="25">
+                <text>*поехать дальше*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<background>road</background>
+		<sound>house</sound>
+		<npcname></npcname>
+        <npctext>Дорога заняла примерно 2 часа. Вы очень устали. Было время подумать и вспомнить то дело, о котором упоминал граф. Тогда какой то языческие культ похищал младенцев ради ритуала. В общем, так и не раскрылось, чего именно добивались культисты.</npctext>
+        <answers>
+            <answer tonode="26">
+                <text>*продолжить*</text>
+            </answer>
+        </answers>
+    </node>
+	<node>
+		<npcname>Мысли</npcname>
+        <npctext>Наконец-то я добрался до дома графа, нужно вести себя прилично, чтобы он больше доверился мне. Вдруг так раскроются некоторые подробности нового дела.</npctext>
+        <answers>
+            <answer tonode="26">
+                <text>*Конец второй главы*</text>
+			    <end>true</end>
+            </answer>
+        </answers>
+    </node>
+</dialogue>
